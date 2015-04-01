@@ -12,13 +12,8 @@ public class ExamineServers {
 
 	 @Autowired LoadBalancerClient loadBalancer;
 	
-	public void process() {
-        
+	public URI getAClientUri() {
 		ServiceInstance instance = loadBalancer.choose("searchEngines");
-        
-		URI searchEngineUri = instance.getUri();
-		
-		System.out.println(searchEngineUri);
-		
+		return instance.getUri();
 	}
 }
